@@ -1,0 +1,8 @@
+.btn{
+  padding: 5px 10px;
+  color: black;
+  border-radius:  3px; 
+  border: none;
+  margin: 5px 15px;
+  transition: all ease-out 120ms;
+}

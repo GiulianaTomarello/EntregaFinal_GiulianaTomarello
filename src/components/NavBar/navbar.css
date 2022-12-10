@@ -1,0 +1,23 @@
+.nav-general{ 
+  width: 100%; 
+  margin-bottom: 60px;
+  background-color: rgb(158, 142, 157);
+}
+
+.nav-list{  
+  height: 30px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  font-size: 15;
+  color:rgb(28, 28, 28)
+}
