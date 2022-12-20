@@ -3,7 +3,8 @@ const products = [
     id: 1,
     title: "Cartera Las Oreiro",
     price: 3400,
-    stock: 10,
+    stock: 0,
+    discount: "25%",
     imgurl: "https://www.modax.com.ar/media/catalog/product/cache/9bd976e80ec43a3549bdfb49d31435ca/1/7/17632.jpg",
     description: "Medida 35 x 25 cm.",
     category: "Cartera"
@@ -13,6 +14,7 @@ const products = [
     title: "Mochila Las Oreiros",
    price: 5600,
     stock: 8,
+    discount: "10%",
     imgurl: "https://lechic.com.ar/wp-content/uploads/2022/03/21224.png-768x768.png",
     description:
       "Medida 50 x 30 cm",

@@ -8,6 +8,7 @@ function CartWidget() {
   console.log(miContext)
   return <>
   <IconSVG />
+  
   <span>{miContext.itemsInCart()}</span>
   </>
 }

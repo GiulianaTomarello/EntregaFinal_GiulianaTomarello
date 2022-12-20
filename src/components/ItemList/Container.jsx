@@ -6,6 +6,7 @@ import { getSingleItem } from "../../Services/mockService";
 import { useParams } from "react-router-dom";
 import getItems from "../../Services/mockService";
 import ItemList from "./ItemList";
+import Loader from "../Loader/Loader";
 
 
 function Container() {
@@ -13,7 +14,7 @@ function Container() {
   // const parametrosUrl = useParams();
   const {idCategory}= useParams();
 
-  const loader = <h3>Cargando productos ...</h3>
+
 
   async function getItemsAsync() {
     let respuesta = await getItems(idCategory);
@@ -27,8 +28,14 @@ function Container() {
     };
   }, [idCategory]);
 
-  return <>{products ? <ItemList products={products}/> : loader }</>
-  
+  return(
+  <div className="catalogo">
+  {products ? <ItemList products={products}/> : <Loader/> }
+  </div>
+  )
 }
+  
+  
+
 
 export default Container;

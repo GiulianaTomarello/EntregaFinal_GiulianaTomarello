@@ -14,6 +14,7 @@ function ItemList({ products }) {
             price={product.price}
             stock={product.stock}
             category={product.category}
+            discount={product.discount}
             color="darkgreen"
           />
         );
