@@ -31,24 +31,25 @@ export function CartContextProvider(props){
     cart.forEach((itemInCart) => (total= total+ itemInCart.count))
     return total
 
-    const clear = () =>{
-        setCart([])
-    }
-    
-    const isInCart = (id) => {
-        return cart.some((prod)=> prod.id===id)
-    }
-    
-    const removeItem = (id) => {
-        setCart(cart.filter((prod)=> prod.id!==id))
-    }
+
    }
 
+   const clear = () =>{
+    setCart([])
+}
+
+const isInCart = (id) => {
+    return cart.some((prod)=> prod.id===id)
+}
+
+const removeItem = (id) => {
+    setCart(cart.filter((prod)=> prod.id!==id))
+}
    
 
     return(
         
-        <cartContext.Provider value={{cart, saludo,addToCart, itemsInCart}}>
+        <cartContext.Provider value={{cart, clear, isInCart, removeItem, saludo,addToCart, itemsInCart}}>
             {props.children}
         </cartContext.Provider>
     )
