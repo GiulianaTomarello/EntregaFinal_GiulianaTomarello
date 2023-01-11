@@ -30,10 +30,25 @@ export function CartContextProvider(props){
     let total = 0
     cart.forEach((itemInCart) => (total= total+ itemInCart.count))
     return total
+
+    const clear = () =>{
+        setCart([])
+    }
+    
+    const isInCart = (id) => {
+        return cart.some((prod)=> prod.id===id)
+    }
+    
+    const removeItem = (id) => {
+        setCart(cart.filter((prod)=> prod.id!==id))
+    }
    }
 
+   
+
     return(
-        <cartContext.Provider value={{saludo,addToCart, itemsInCart}}>
+        
+        <cartContext.Provider value={{cart, saludo,addToCart, itemsInCart}}>
             {props.children}
         </cartContext.Provider>
     )

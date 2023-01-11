@@ -5,6 +5,7 @@ import "./CartView.css"
 
 
 function CartView() {
+  
   const {cart, removeItem, clear, proceInCart } = useContext(cartContext)
 
   if (cart.length === 0) return <h1>Carrito vacio</h1>
