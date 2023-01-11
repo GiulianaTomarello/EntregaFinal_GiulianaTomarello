@@ -1,16 +1,21 @@
-import React from "react";
+import React, {useContext} from "react";
 import IconSVG from "./IconSVG";
-import  { useContext } from "react";
 import { cartContext } from "../../Context/cartContext";
+import { Link } from "react-router-dom"
+
 
 function CartWidget() {
   const miContext = useContext(cartContext)
-  console.log(miContext)
-  return <>
-  <IconSVG />
-  
-  <span>{miContext.itemsInCart()}</span>
-  </>
+ 
+  return(
+    <div>
+      <Link to="/cart">
+      <IconSVG />
+      </Link>
+
+      <span style={{ color: "red" }}>{miContext.itemsInCart()}</span>
+    </div>
+  )
 }
 
 export default CartWidget;

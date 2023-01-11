@@ -4,28 +4,30 @@ import Item from "./Item";
 import "./itemgeneral.css";
 import { getSingleItem } from "../../Services/mockService";
 import { useParams } from "react-router-dom";
-import getItems from "../../Services/mockService";
+import getItems, { getItemsByCategory } from "../../Services/firestore";
 import ItemList from "./ItemList";
 import Loader from "../Loader/Loader";
 
 
 function Container() {
   const [products, setProducts] = useState(null);
-  // const parametrosUrl = useParams();
   const {idCategory}= useParams();
 
 
 
   async function getItemsAsync() {
-    let respuesta = await getItems(idCategory);
+    if(!idCategory){
+    let respuesta = await getItems();
     setProducts(respuesta);
+  }else{
+    let respuesta = await getItemsByCategory(idCategory)
+    setProducts(respuesta)
   }
+}
+  
 
   useEffect(() => {
     getItemsAsync();
-    return () => {
-      console.log("Componente desmontado");
-    };
   }, [idCategory]);
 
   return(
@@ -38,4 +40,5 @@ function Container() {
   
 
 
-export default Container;
+export default Container
+
