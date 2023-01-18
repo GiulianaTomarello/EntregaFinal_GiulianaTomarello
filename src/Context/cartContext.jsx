@@ -30,8 +30,12 @@ export function CartContextProvider(props){
     let total = 0
     cart.forEach((itemInCart) => (total= total+ itemInCart.count))
     return total
+   }
 
-
+   function priceInCart(){
+    let totalPrice = 0
+    cart.forEach((producto) => (totalPrice= totalPrice+ producto.price*producto.cantidad))
+    return totalPrice
    }
 
    const clear = () =>{
@@ -49,7 +53,7 @@ const removeItem = (id) => {
 
     return(
         
-        <cartContext.Provider value={{cart, clear, isInCart, removeItem, saludo,addToCart, itemsInCart}}>
+        <cartContext.Provider value={{cart, clear, isInCart, removeItem, saludo,addToCart, itemsInCart, priceInCart}}>
             {props.children}
         </cartContext.Provider>
     )

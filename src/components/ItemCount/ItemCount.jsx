@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MyButton from "../MyButton/Button";
 
 function ItemCount({ stock, onAddToCart }) {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
 
   function handleAdd() {
     if (count < stock) setCount(count + 1);
@@ -25,10 +25,10 @@ function ItemCount({ stock, onAddToCart }) {
         </MyButton>
       </div>
       <div className="itemcount_btns">
-        {/* 3. agregar un onClick con el evento recibido por Props */}
-        <button onClick={()=>onAddToCart(count)}>
-          agregar al carrito
-        </button>
+        <button onClick={()=>onAddToCart(count)} disabled={count<=0}>
+ agregar al carrito
+ </button>
+
       </div>
     </div>
   );
