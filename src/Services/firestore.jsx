@@ -66,6 +66,7 @@ export async function createOrder(order){
   const collectionRef = collection(DB,"orders")
   const docOrder = await addDoc (collectionRef, order)
   console.log(docOrder.id)
+  return docOrder.id
 }
 
 async function exportArrayToFirestore(){
