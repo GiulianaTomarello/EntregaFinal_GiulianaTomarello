@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { cartContext } from '../../Context/cartContext'
-import { createOrder } from '../../Services/firestore'
+import { createOrder, exportArrayToFirestore } from '../../Services/firestore'
 import { useNavigate } from 'react-router-dom'
 import MyButton from '../MyButton/Button'
 import "./CartView.css"
@@ -11,9 +11,16 @@ function CartView() {
   const {cart, removeItem, clear, priceInCart } = useContext(cartContext)
   let navigate = useNavigate()
 
-  if (cart.length === 0) return <h1>Carrito vacio</h1>
 
-  function  handleCheckout (evt){
+  if (cart.length === 0) return (
+    <div>
+
+    <h1>Carrito vacio</h1>
+    </div>
+  
+  )
+
+  async function handleCheckout (evt){
     const order = {
       buyer: {
         name: "giuli",
@@ -24,9 +31,8 @@ function CartView() {
       total: 0,
       date: new Date(),
     }
-    const orderId = createOrder(order)
-    navigate (`/thankyou/`)
-    // ${orderId}
+    const orderId = await createOrder(order)
+    navigate (`/thankyou/${orderId}`)
   }
     
   
@@ -47,7 +53,7 @@ function CartView() {
 
         </div>
       ))}
-      <MyButton colorBtn="green" onTouchButton={handleCheckout}>Finalizar compra</MyButton>
+      <MyButton colorBtn="green" onClick={handleCheckout}>Finalizar compra</MyButton>
       <button onClick ={() => clear()} >Vaciar carrito</button>
     </div>
   )
